@@ -30,4 +30,4 @@ jobs:
 - job: PROD
   steps:
   - script:
-     echo "ConnectionString . $(parameters.Environment)"
+     echo " $(parameters.Environment)"
