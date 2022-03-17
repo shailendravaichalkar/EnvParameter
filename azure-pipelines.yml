@@ -33,6 +33,6 @@ jobs:
 - job: PROD
   steps:
   - script:
-      echo ${$(ConnectionString)}
+      eval a = '$'$(ConnectionString)
 
      
