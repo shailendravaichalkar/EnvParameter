@@ -27,6 +27,6 @@ variables:
 - name: NewConnectionString
   value: 'ConnectionString . $(parameters.Environment)'
 
-New-Variable -Name "NewConnectionString" -Value 'ConnectionString . ${parameters.Environment}' -Force
+- New-Variable -Name "NewConnectionString" -Value 'ConnectionString . ${parameters.Environment}' -Force
 
 - script: echo $(NewConnectionString)
