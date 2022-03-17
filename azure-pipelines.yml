@@ -32,4 +32,4 @@ jobs:
 - job: PROD
   steps:
   - script:
-     echo $($(ConnectionString))
+     echo ${ConnectionString}
