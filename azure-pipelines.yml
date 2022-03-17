@@ -29,6 +29,6 @@ variables:
 jobs:
 - job: PROD
   steps:
-  - script |
+  - script:
      echo HI
      echo $(ConnectionString)
