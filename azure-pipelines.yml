@@ -25,12 +25,11 @@ variables:
 - name: ConnectionStringTest
   value: 'AuthType=ClientSecret;ClientId=$(cds_appid);ClientSecret=$(cds_secret);Url=https://nwenteracttest.$(cds_region).dynamics.com'
 - name: ConnectionString
-  value: 'ConnectionString${{parameters.Environment}}'
+  value: '$(ConnectionString${{parameters.Environment}}')
 
 
 jobs:
 - job: PROD
   steps:
   - script:
-     a=`echo $(ConnectionString)`
-     echo $(a)
+    echo $(ConnectionString)
