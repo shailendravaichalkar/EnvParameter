@@ -1,3 +1,9 @@
+# This Pipeline is created to test the connections to the ORG
+# V 1.0
+# Author : Shailendra V
+
+trigger: none
+
 parameters:
 - name: Environment
   type: string
@@ -9,36 +15,20 @@ parameters:
    - UAT
    - PROD
 
-
-trigger: none
+variables:
+- group: FiservNWEnteract
+- name: ConnectionStringDEV
+  value: 'AuthType=ClientSecret;ClientId=$(cds_appid);ClientSecret=$(cds_secret);Url=https://nwenteractdev.$(cds_region).dynamics.com'
+- name: ConnectionStringUAT
+  value: 'AuthType=ClientSecret;ClientId=$(UATcds_appid);ClientSecret=$(UATcds_secret);Url=https://nwenteractuat.$(cds_region).dynamics.com'
+- name: ConnectionStringQA
+  value: 'AuthType=ClientSecret;ClientId=$(UATcds_appid);ClientSecret=$(UATcds_secret);Url=https://nwenteractqa.$(cds_region).dynamics.com'
+- name: ConnectionStringTest
+  value: 'AuthType=ClientSecret;ClientId=$(cds_appid);ClientSecret=$(cds_secret);Url=https://nwenteracttest.$(cds_region).dynamics.com'
+- name: NewConnectionString
+  value: 'ConnectionString . $(parameters.Environment)'
 
 jobs:
-
-- ${{ if contains(parameters.Environment, 'Dev') }}:
-  - job: Dev
-    steps:
-    - script: echo Dev
-    - task: CmdLine@2
-      inputs:
-        script: |
-            echo "HI"
-
-- ${{ if contains(parameters.Environment, 'Test') }}:
-  - job: Test
-    steps:
-    - script: echo Test
-
-- ${{ if contains(parameters.Environment, 'QA') }}:
-  - job: QA
-    steps:
-    - script: echo QA
-
-- ${{ if contains(parameters.Environment, 'UAT') }}:
-  - job: UAT
-    steps:
-    - script: echo UAT
-
-- ${{ if contains(parameters.Environment, 'PROD') }}:
-  - job: PROD
-    steps:
-    - script: echo PROD
+- job: PROD
+  steps:
+  - script: echo $(NewConnectionString)
