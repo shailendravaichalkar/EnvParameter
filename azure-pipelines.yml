@@ -30,5 +30,4 @@ jobs:
 - job: PROD
   steps:
   - script:
-     New-Variable -Name "ConnectionString" -Value 'ConnectionString' -Force
-     echo $(ConnectionString)
+     echo '$(ConnectionString${parameters.Environment})'
