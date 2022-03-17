@@ -27,6 +27,8 @@ variables:
 - name: NewConnectionString
   value: 'ConnectionString . $(parameters.Environment)'
 
+New-Variable -Name "NewConnectionString" -Value 'ConnectionString . ${parameters.Environment}' -Force
+
 jobs:
 - job: PROD
   steps:
