@@ -30,4 +30,4 @@ jobs:
 - job: PROD
   steps:
   - script:
-     echo " $(parameters.Environment)"
+     echo $(parameters.Environment)
