@@ -32,5 +32,5 @@ jobs:
 - job: PROD
   steps:
   - script:
-     a=echo $(ConnectionString)
+     a=`echo $(ConnectionString)`
      echo $(a)
