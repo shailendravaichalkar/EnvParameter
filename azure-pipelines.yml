@@ -29,7 +29,4 @@ variables:
 
 New-Variable -Name "NewConnectionString" -Value 'ConnectionString . ${parameters.Environment}' -Force
 
-jobs:
-- job: PROD
-  steps:
-  - script: echo $(NewConnectionString)
+- script: echo $(NewConnectionString)
