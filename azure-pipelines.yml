@@ -32,8 +32,6 @@ variables:
 jobs:
 - job: PROD
   steps:
-  - script:
-
   - task: Bash@3
     inputs:
       targetType: 'inline'
