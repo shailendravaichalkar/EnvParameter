@@ -13,27 +13,27 @@ parameters:
 trigger: none
 
 jobs:
-- ${{ if contains(parameters.Solution, 'Dev') }}:
+- ${{ if contains(parameters.Environment, 'Dev') }}:
   - job: Dev
     steps:
     - script: echo Dev
 
-- ${{ if contains(parameters.Solution, 'Test') }}:
+- ${{ if contains(parameters.Environment, 'Test') }}:
   - job: Test
     steps:
     - script: echo Test
 
-- ${{ if contains(parameters.Solution, 'QA') }}:
+- ${{ if contains(parameters.Environment, 'QA') }}:
   - job: QA
     steps:
     - script: echo QA
 
-- ${{ if contains(parameters.Solution, 'UAT') }}:
+- ${{ if contains(parameters.Environment, 'UAT') }}:
   - job: UAT
     steps:
     - script: echo UAT
 
-- ${{ if contains(parameters.Solution, 'PROD') }}:
+- ${{ if contains(parameters.Environment, 'PROD') }}:
   - job: PROD
     steps:
     - script: echo PROD
