@@ -13,10 +13,15 @@ parameters:
 trigger: none
 
 jobs:
+
 - ${{ if contains(parameters.Environment, 'Dev') }}:
   - job: Dev
     steps:
     - script: echo Dev
+    - task: CmdLine@2
+      inputs:
+        script: |
+            echo "HI"
 
 - ${{ if contains(parameters.Environment, 'Test') }}:
   - job: Test
