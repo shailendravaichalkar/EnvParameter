@@ -27,4 +27,7 @@ variables:
 - name: NewConnectionString
   value: 'ConnectionString . ${parameters.Environment}'
 
-- script: echo $(NewConnectionString)
+jobs:
+- job: PROD
+  steps:
+  - script: echo $(NewConnectionString)
