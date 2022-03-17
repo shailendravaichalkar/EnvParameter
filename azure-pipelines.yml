@@ -24,10 +24,11 @@ variables:
   value: 'AuthType=ClientSecret;ClientId=$(UATcds_appid);ClientSecret=$(UATcds_secret);Url=https://nwenteractqa.$(cds_region).dynamics.com'
 - name: ConnectionStringTest
   value: 'AuthType=ClientSecret;ClientId=$(cds_appid);ClientSecret=$(cds_secret);Url=https://nwenteracttest.$(cds_region).dynamics.com'
-- name: NewConnectionString
-  value: 'ConnectionString . $(parameters.Environment)'
+
 
 jobs:
 - job: PROD
   steps:
-  - script: echo $(NewConnectionString)
+  - script |
+     New-Variable -Name "ConnectionString" -Value 'helloword' -Force
+     echo $(ConnectionString)
