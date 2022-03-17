@@ -33,7 +33,14 @@ jobs:
 - job: PROD
   steps:
   - script:
-      eval a='$'$(ConnectionString)
-      echo $(a)
+
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+       script: |
+      # Write your commands here
+      
+         eval a='$'$(ConnectionString)
+         echo $(a)
 
      
