@@ -1,0 +1,39 @@
+parameters:
+- name: Environment
+  type: string
+  default: 'Dev'
+  values:
+   - Dev
+   - Test
+   - QA
+   - UAT
+   - PROD
+
+
+trigger: none
+
+jobs:
+- ${{ if contains(parameters.Solution, 'Dev') }}:
+  - job: Dev
+    steps:
+    - script: echo Dev
+
+- ${{ if contains(parameters.Solution, 'Test') }}:
+  - job: Test
+    steps:
+    - script: echo Test
+
+- ${{ if contains(parameters.Solution, 'QA') }}:
+  - job: QA
+    steps:
+    - script: echo QA
+
+- ${{ if contains(parameters.Solution, 'UAT') }}:
+  - job: UAT
+    steps:
+    - script: echo UAT
+
+- ${{ if contains(parameters.Solution, 'PROD') }}:
+  - job: PROD
+    steps:
+    - script: echo PROD
